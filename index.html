@@ -73,38 +73,38 @@
 					<form onsubmit="return false;">
 						<table class="table">
 							<tr>
-								<td>end user's machine</td>
+								<td>USERS' MACHINE</td>
 								<td></td>
-								<td>tmp filename during upload</td>
+								<td>TRANSFER</td>
 								<td></td>
-								<td>final filename</td>
+								<td>UPLOAD LIST</td>
 							</tr>
 							<tr>
 								<td>
-									<select id="s1" size="10">
+									<select id="users-list" size="10">
 										<option selected="true">tree.mov 100 MB</option>
 									</select>
 								</td>
 								<td>
-									<input type="submit" id="b1" onclick="start100();" value="transfer full 100 MB"/>
+									<input type="submit" id="butt100" value="transfer full 100 MB"/><!-- onclick="start100();" -->
 									<br />
 									<br />
-									<input type="submit" id="b2" onclick="start50();" value="transfer just 50 MB"/>
+									<input type="submit" id="butt50" value="transfer just 50 MB"/><!-- onclick="start50();" -->
 									<br />
 									<br />
-									<input type="submit" id="b3" value="resume send last 50 MB"/>
+									<input type="submit" id="butthuh" value="resume send last 50 MB"/>
 								</td>
 								<td>
-									<select id="s2" size="10"></select>
+									<select id="transfer-list" size="10"></select>
 								</td>
 								<td>
-									<input type="submit" id="b4" onclick="move();" value="move to final location"/>
+									<input type="submit" id="buttload"  value="move to final location"/><!-- onclick="move();" !!! -->
 									<br />
 									<br />
-									<input type="submit" id="b5" onclick="del();" value="delete fragment"/>
+									<input type="submit" id="buttfrag"  value="delete fragment"/><!-- onclick="del();" -->
 								</td>
 								<td>
-									<select id="s3" size="10"></select>
+									<select id="final-list" size="10"></select>
 								</td>
 							</tr>
 						</table>
@@ -126,6 +126,42 @@
 	</aside>
 
 <script>
+
+function moveOption() {
+	var userList = document.getElementById("users-list");
+	var transferList = document.getElementById("transfer-list");
+	var finalList = document.getElementById("final-list");
+
+	var defaultItem = userList.selectedIndex;
+
+	if (defaultItem == -1) {
+		window.alert("Please select an item under 'USERS MACHINE'.")
+	} else {
+
+		var itemSwipe = userList[defaultItem].cloneNode(true);
+
+		userList.removeChild(userList[defaultItem]);
+		transferList.appendChild(itemSwipe);
+	}
+}
+document.getElementById('butt100').onclick = moveOption;
+
+
+/* 
+
+http://stackoverflow.com/questions/19719768/trying-to-move-one-option-to-another-select-list
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedIndex
+
+
+#users-list
+#transfer-list
+#final-list
+
+
+*/
+
+
 // function move() {
 //   var g = $("#s2 option").filter(":selected").val();
 //   if (g == undefined) {
