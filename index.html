@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="pages-home" lang="en" xml:lang="en">
 <head>
-	<title>higherdotteam-proj003 - yerpalrob, v.1</title>
+	<title>higherdotteam-proj003 - yerpalrob, v.1.3</title>
 	<link rel="stylesheet" media="all" href="https://higher.team/assets/application-2f15eae10e1e436124aaba4f669d9c32aeb9d85175a909476c63a7542636a574.css" data-turbolinks-track="true" />
+	<style type="text/css">
+		section { padding: 20px 0 !important; }
+	</style>
 	<script src="https://higher.team/assets/application-56097e14745ae85f352758cafb88a4c86afe945e43054a441cb62a5068d597fe.js" data-turbolinks-track="true"></script>
-	<meta name="csrf-param" content="authenticity_token" />
-	<meta name="csrf-token" content="GRTtaXNzAchKvL3cJIG2gK2RpojxhoyXt8QFXSO0E7nW5ECj0vMqRJGTiTfpXxlz+5EU22zCbXujGKY8GJ6p3Q==" />
-
 	<script>
 	// (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	// (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -22,46 +22,12 @@
 
 
 <body id="page-top">
-
-	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-				</button>
-				<a class="navbar-brand page-scroll" href="/">higher.team</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a class="page-scrol" href="/about">About</a>
-					</li>
-					<li>
-						<a class="page-scroll" href="/curriculum">Curriculum</a>
-					</li>
-					<li>
-						<a class="page-scrolli2" href="/blog">Blog</a>
-					</li>
-					<li>
-						<a class="page-scrolli2" href="/apply">Apply</a>
-					</li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
-
 	<section class="bg-primary" id="about">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 text-center">
-					<h2 class="section-heading">js example</h2>
-					<hr class="light">
-					<p class="text-faded"></p>
+					<h2 class="section-heading">higherdotteam-proj003 - yerpalrob, v.1.3</h2>
+					<!-- <hr class="light"> -->
 				</div>
 			</div>
 		</div>
@@ -82,26 +48,26 @@
 							<tr>
 								<td>
 									<select id="users-list" size="10">
-										<option selected="true">tree.mov 100 MB</option>
+										<option selected="true">tree.mov - 100 MB</option>
 									</select>
 								</td>
 								<td>
 									<input type="submit" id="butt100" value="transfer full 100 MB"/><!-- onclick="start100();" -->
 									<br />
 									<br />
-									<input type="submit" id="butt50" value="transfer just 50 MB"/><!-- onclick="start50();" -->
+									<input type="submit" id="butt50" value="transfer just 50 MB"/><!-- onclick="start50();"
 									<br />
 									<br />
-									<input type="submit" id="butthuh" value="resume send last 50 MB"/>
+									<input type="submit" id="resume-butt" value="resume send last 50 MB"/> -->
 								</td>
 								<td>
 									<select id="transfer-list" size="10"></select>
 								</td>
 								<td>
-									<input type="submit" id="buttload"  value="move to final location"/><!-- onclick="move();" !!! -->
+									<input type="submit" id="load-butt"  value="move to final location"/><!-- onclick="move();" !!! -->
 									<br />
 									<br />
-									<input type="submit" id="buttfrag"  value="delete fragment"/><!-- onclick="del();" -->
+									<input type="submit" id="delete-butt"  value="delete fragment"/><!-- onclick="del();" -->
 								</td>
 								<td>
 									<select id="final-list" size="10"></select>
@@ -120,31 +86,55 @@
 				<a href="/" class="btn btn-default btn-xl sr-button">higher.team</a>
 			</div>
 			<br />
-			<br />
 			<a href="/blog/2016/december/why-i-started-higher-dot-team">Read our first article: why I started higher dot team</a>
 		</div>
 	</aside>
-
 <script>
 
-function moveOption() {
-	var userList = document.getElementById("users-list");
-	var transferList = document.getElementById("transfer-list");
-	var finalList = document.getElementById("final-list");
+var userList = document.getElementById("users-list");
+var transferList = document.getElementById("transfer-list");
+var finalList = document.getElementById("final-list");
 
+function moveToTransfer() {
 	var defaultItem = userList.selectedIndex;
-
 	if (defaultItem == -1) {
-		window.alert("Please select an item under 'USERS MACHINE'.")
+		window.alert("There are no files pending from the USER'S MACHINE.")
 	} else {
-
-		var itemSwipe = userList[defaultItem].cloneNode(true);
-
-		userList.removeChild(userList[defaultItem]);
-		transferList.appendChild(itemSwipe);
+		var userToTransfer = userList[defaultItem].cloneNode(true);
+		// userList.removeChild(userList[defaultItem]);
+		transferList.appendChild(userToTransfer);
 	}
 }
-document.getElementById('butt100').onclick = moveOption;
+
+function moveToUpload() {
+	var defaultItem = transferList.selectedIndex;
+	if (defaultItem == -1) {
+		window.alert("Try moving a file from USER'S MACHINE to TRANSFER first")
+	} else {
+		var transferToUpload = transferList[defaultItem].cloneNode(true);
+		transferList.removeChild(transferList[defaultItem]);
+		finalList.appendChild(transferToUpload);
+	}
+}
+
+function finalToTransfer() {
+	var defaultItem = finalList.selectedIndex;
+	var backToTransfer = finalList[defaultItem].cloneNode(true);
+	finalList.removeChild(finalList[defaultItem]);
+	transferList.appendChild(backToTransfer);
+}
+
+// function changeFiddy() {
+// 	var originalOption = userList.selectedIndex;
+// 	var optionCopy = originalOption.innerHTML;
+
+// 	console.log(optionCopy);
+// }
+
+document.getElementById('butt100').onclick = moveToTransfer;
+// document.getElementById('butt50').onclick = changeFiddy;
+document.getElementById('load-butt').onclick = moveToUpload;
+document.getElementById('delete-butt').onclick = finalToTransfer;
 
 
 /* 
@@ -153,59 +143,24 @@ http://stackoverflow.com/questions/19719768/trying-to-move-one-option-to-another
 
 https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedIndex
 
+::::: ::::: ::::: ::::: ::::: ::::: ::::: ::::: ::::: ::::: :::::
 
-#users-list
-#transfer-list
-#final-list
+function transferAcrossFields() {
+	var userDefaultItem = userList.selectedIndex;
+	var transferDefaultItem = transferList.selectedIndex;
 
+	if (userDefaultItem || transferDefaultItem == -1) {
+		window.alert("There are no files available in those lists.")
+	} else if () {
+
+	}
+}
+function removeFromFields() {
+}
 
 */
 
-
-// function move() {
-//   var g = $("#s2 option").filter(":selected").val();
-//   if (g == undefined) {
-//     return;
-//   }
-//   $("#s2 option[value='" + g + "']").remove();
-//   $('#s3').append($('<option/>', { 
-//       value: "1",
-//       text : "tree.mov 100 MB"
-//     }));
-// }
-// function del() {
-//   var g = $("#s2 option").filter(":selected").val();
-//   if (g == undefined) {
-//     return;
-//   }
-//   $("#s2 option[value='" + g + "']").remove();
-// }
-// function start50() {
-//   var g = guid();
-//   $('#s2').append($('<option/>', { 
-//       value: g,
-//       text : g + "/tree.mov 50 MB"
-//     }));
-// }
-// function start100() {
-//   var g = guid();
-//   $('#s2').append($('<option/>', { 
-//       value: g,
-//       text : g + "/tree.mov 100 MB"
-//     }));
-// }
-// function guid() {
-//   function s4() {
-//     return Math.floor((1 + Math.random()) * 0x10000)
-//       .toString(16)
-//       .substring(1);
-//   }
-//   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-//     s4() + '-' + s4() + s4() + s4();
-// }
 </script>
 
-
 </body>
-
 </html>
